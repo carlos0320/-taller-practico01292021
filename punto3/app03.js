@@ -21,10 +21,9 @@
 // Si hay suficiente cantidad de entradas por vender, se debe mostrar
 // el mensaje: "Aquí tiene sus X entradas, gracias." y se debe actualizar
 // el número de entradas disponibles por cada zona.
-
-class VIP {
-    constructor() {
-        this.entradas = 30;
+class Entrada{
+    constructor(entradas){
+        this.entradas=entradas;
     }
     getEntradas() {
         return this.entradas;
@@ -46,54 +45,25 @@ class VIP {
         }
 
     }
+    
 }
-class PLATINO {
-    constructor() {
-        this.entradas = 50;
+class VIP extends Entrada{
+    constructor(entradas) {
+        super(entradas)
     }
-    getEntradas() {
-        return this.entradas;
-    }
-    setEntradas(entradas) {
-        this.entradas = entradas;
-    }
-    mostrarEntradas() {
-        console.log(`El numero de entradas libres para Platino  es ${this.entradas}`);
-    }
-    venderEntradas(entradas) {
-        if (entradas > this.entradas) {
-            console.log("Lo siento, las entradas para esa zona están agotadas");
-        } else {
-            this.entradas -= entradas;
-            this.mostrarEntradas();
-            console.log(`Aqui tiene sus ${entradas}, gracias!`);
-        }
-
-    }
+   
 }
-class GENERAL {
-    constructor() {
-        this.entradas = 100;
+class PLATINO extends Entrada {
+    constructor(entradas) {
+        super(entradas)
     }
-    getEntradas() {
-        return this.entradas;
+    
+}
+class GENERAL extends Entrada{
+    constructor(entradas) {
+        super(entradas)
     }
-    setEntradas(entradas) {
-        this.entradas = entradas;
-    }
-    mostrarEntradas() {
-        console.log(`El numero de entradas libres para General es ${this.entradas}`);
-    }
-    venderEntradas(entradas) {
-        if (entradas > this.entradas) {
-            console.log("Lo siento, las entradas para esa zona están agotadas");
-        } else {
-            this.entradas -= entradas;
-            this.mostrarEntradas();
-            console.log(`Aqui tiene sus ${entradas}, gracias!`);
-        }
-
-    }
+   
 }
 
 function controlEntradas(opcion, vip, platino, general) {
@@ -129,9 +99,9 @@ function controlEntradas(opcion, vip, platino, general) {
 
 function principal() {
     let op = 0;
-    let vip = new VIP();
-    let platino = new PLATINO();
-    let general = new GENERAL();
+    let vip = new VIP(30);
+    let platino = new PLATINO(50);
+    let general = new GENERAL(100);
     let opcion = "";
     let numeroEntradas = 0;
     do {
